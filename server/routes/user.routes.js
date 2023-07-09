@@ -39,7 +39,7 @@ userRouter.post("/login", async (req, res) => {
     if (user) {
       bcrypt.compare(password, user.password, (err, result) => {
         if (result) {
-          let token = jwt.sign({ userID: user._id, user: user.name }, "settyl");
+          let token = jwt.sign({ userID: user._id, user: user.first_name }, "settyl");
           res.status(200).json({ mag: "Logged In Successful.", token });
         } else {
           res.json({ error: "wrong email or passsword" });
