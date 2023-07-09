@@ -1,88 +1,42 @@
-import React from "react";
-import { useState } from "react";
 import {
   Box,
   Flex,
-  Spacer,
+  HStack,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
   IconButton,
   useDisclosure,
+  useColorModeValue,
 } from "@chakra-ui/react";
+
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
-const Navbar = () => {
+export default function Simple() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isMobile, setIsMobile] = useState(false);
-
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 768);
-  };
-
-  useState(() => {
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
-    <Box bg="gray.200" px={4} py={2}>
-      <Flex alignItems="center">
-        <Box display={{ base: "block", md: "none" }}>
+    <>
+      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
+            size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            variant="ghost"
+            aria-label={"Open Menu"}
+            display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           />
-        </Box>
+          <Flex
+            spacing={8}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+          >
+            <Box>Logo</Box>
 
-        <Box display={{ base: "none", md: "block" }}>
-          <Logo />
-        </Box>
-
-        {isMobile ? (
-          <Menu>
-            <MenuButton as={Button} variant="ghost" ml={2}>
-              Menu
-            </MenuButton>
-            <MenuList>
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>Login/Register</MenuItem>
-              <MenuItem>Logout</MenuItem>
-            </MenuList>
-          </Menu>
-        ) : (
-          <React.Fragment>
-            <Spacer />
-
-            <Box display={{ base: "none", md: "block" }}>
-              <Button variant="ghost" mr={2}>
-                Profile
-              </Button>
-              <Button variant="ghost" mr={2}>
-                Login/Register
-              </Button>
-              <Button variant="ghost" mr={2}>
-                Logout
-              </Button>
-            </Box>
-          </React.Fragment>
-        )}
-      </Flex>
-    </Box>
+            {/* Navbar Links here */}
+            <Button>Login</Button>
+            <Button>Sign-up</Button>
+          </Flex>
+        </Flex>
+      </Box>
+    </>
   );
-};
-
-const Logo = () => {
-  return (
-    <Box>
-      {/* Add your logo here */}
-      <span>Logo</span>
-    </Box>
-  );
-};
-
-export default Navbar;
+}
