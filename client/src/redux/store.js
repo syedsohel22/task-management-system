@@ -1,7 +1,7 @@
 import { legacy_createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
-import { reduer as taskReducer } from "./taskReducer/reducer";
-import { reduer as authReducer } from "./authReducer/reducer";
+import { reducer as taskReducer } from "./taskReducer/reducer";
+import { reducer as authReducer } from "./authReducer/reducer";
 const rootreducer = combineReducers({
   taskReducer,
   authReducer,

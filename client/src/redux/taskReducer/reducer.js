@@ -13,7 +13,7 @@ const initalstate = {
   tasks: [],
 };
 
-export const reduer = (state = initalstate, { type, payload }) => {
+export const reducer = (state = initalstate, { type, payload }) => {
   switch (type) {
     case TASK_PENDING:
       return { ...state, isError: false, isLoading: true };
