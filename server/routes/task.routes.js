@@ -21,7 +21,7 @@ taskRouter.post("/create", async (req, res) => {
   try {
     const task = new taskModel(req.body);
     await task.save();
-    res.json({ msg: "new note has been added", task: req.body });
+    res.json({ msg: "new task has been added", task: req.body });
   } catch (err) {
     res.json({ error: err });
   }
@@ -33,9 +33,9 @@ taskRouter.patch("/update/:taskID", async (req, res) => {
   const { taskID } = req.params;
   try {
     const task = await taskModel.findOne({ _id: taskID });
-    const userIDinNoteDoc = task.userID;
-    // console.log(userIDinNoteDoc, userIDinUserDoc);
-    if (userIDinUserDoc === userIDinNoteDoc) {
+    const userIDintaskDoc = task.userID;
+    // console.log(userIDintaskDoc, userIDinUserDoc);
+    if (userIDinUserDoc === userIDintaskDoc) {
       await taskModel.findByIdAndUpdate({ _id: taskID }, req.body);
       res.json({ msg: `${task.title} has been updated.` });
     } else {
@@ -52,11 +52,11 @@ taskRouter.delete("/delete/:taskID", async (req, res) => {
   const { taskID } = req.params;
   try {
     const task = await taskModel.findOne({ _id: taskID });
-    const userIDinNoteDoc = task.userID;
-    // console.log(userIDinNoteDoc, userIDinUserDoc);
-    if (userIDinUserDoc === userIDinNoteDoc) {
+    const userIDintaskDoc = task.userID;
+    // console.log(userIDintaskDoc, userIDinUserDoc);
+    if (userIDinUserDoc === userIDintaskDoc) {
       await taskModel.findByIdAndDelete({ _id: taskID });
-      res.json({ msg: `${note.title} has been deleted.` });
+      res.json({ msg: `${task.title} has been deleted.` });
     } else {
       res.json({ msg: "Not Authrized.!" });
     }
