@@ -7,8 +7,8 @@ const taskSchema = mongoose.Schema(
     due_date: { type: String, required: true },
     status: { type: Boolean, required: true },
     assigned_user: { type: String, required: true },
-    userID: { type: String, required: true },
-    user: { type: String, required: true },
+    userID: { type: String,  },
+    user: { type: String, },
   },
   {
     versionKey: false,
