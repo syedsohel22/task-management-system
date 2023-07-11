@@ -15,7 +15,6 @@ const MainRoutes = () => {
       <Route path="/user" element={<UserPage />} />
       <Route path="/admin" element={<AdminPage />} />
       <Route path="*" element={<PageNoteFound />} />
-      <Route path="/quiz" element={<Quiz />} />
     </Routes>
   );
 };

@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 
 export default function Simple() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -28,12 +29,22 @@ export default function Simple() {
             spacing={8}
             alignItems={"center"}
             justifyContent={"space-between"}
+            gap={8}
           >
-            <Box>Logo</Box>
+            <Box>
+              <Link to={"/"}>Logo</Link>
+            </Box>
 
             {/* Navbar Links here */}
-            <Button>Login</Button>
-            <Button>Sign-up</Button>
+            <Box>
+              <Link to={"/login"}>Login</Link>
+            </Box>
+            <Box>
+              <Link to={"/register"}>Sign-up</Link>
+            </Box>
+            <Box>
+              <Link to={"/user"}>Profile</Link>
+            </Box>
           </Flex>
         </Flex>
       </Box>

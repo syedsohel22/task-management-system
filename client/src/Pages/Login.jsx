@@ -28,7 +28,7 @@ const LoginPage = () => {
   };
 
   return (
-    <Container maxW="sm" height={"85vh"} mt={"10%"}>
+    <Container maxW="sm" height={"60vh"} mt={"10%"}>
       <Box p={4} borderWidth="1px" borderRadius="lg">
         <Heading mb={4}>Login</Heading>
         <form onSubmit={handleSubmit}>

@@ -32,8 +32,8 @@ const Register = () => {
   };
 
   return (
-    <Container maxW="sm">
-      <Box p={4} borderWidth="1px" borderRadius="lg">
+    <Container maxW="sm" h={"75vh"}>
+      <Box p={4} borderWidth="1px" borderRadius="lg" mt={"20%"}>
         <Heading mb={4}>Register</Heading>
         <form onSubmit={handleSubmit}>
           <Stack spacing={3}>
