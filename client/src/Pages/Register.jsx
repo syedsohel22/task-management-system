@@ -2,26 +2,20 @@ import { useState } from "react";
 import {
   Box,
   Button,
-  Checkbox,
   Container,
   FormControl,
   FormLabel,
   Heading,
   Input,
   Stack,
-  Radio,
-  RadioGroup,
 } from "@chakra-ui/react";
-
+import { useDispatch, useSelector } from "react-redux";
+import { registerFunc } from "../redux/authReducer/action";
 const Register = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    full_name: "",
     email: "",
     password: "",
-    gender: "",
-    city: "",
-    age: "",
   });
 
   const handleInputChange = (e) => {
@@ -29,9 +23,11 @@ const Register = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
+    dispatch(registerFunc(formData));
     console.log(formData);
   };
 
@@ -42,21 +38,11 @@ const Register = () => {
         <form onSubmit={handleSubmit}>
           <Stack spacing={3}>
             <FormControl isRequired>
-              <FormLabel>First Name</FormLabel>
+              <FormLabel>Full Name</FormLabel>
               <Input
                 type="text"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleInputChange}
-              />
-            </FormControl>
-
-            <FormControl isRequired>
-              <FormLabel>Last Name</FormLabel>
-              <Input
-                type="text"
-                name="lastName"
-                value={formData.lastName}
+                name="full_name"
+                value={formData.full_name}
                 onChange={handleInputChange}
               />
             </FormControl>
@@ -80,43 +66,6 @@ const Register = () => {
                 onChange={handleInputChange}
               />
             </FormControl>
-
-            <FormControl isRequired>
-              <FormLabel>Gender</FormLabel>
-              <RadioGroup
-                name="gender"
-                value={formData.gender}
-                onChange={handleInputChange}
-              >
-                <Stack direction="row">
-                  <Radio value="male">Male</Radio>
-                  <Radio value="female">Female</Radio>
-                  <Radio value="other">Other</Radio>
-                </Stack>
-              </RadioGroup>
-            </FormControl>
-
-            <FormControl isRequired>
-              <FormLabel>City</FormLabel>
-              <Input
-                type="text"
-                name="city"
-                value={formData.city}
-                onChange={handleInputChange}
-              />
-            </FormControl>
-
-            <FormControl isRequired>
-              <FormLabel>Age</FormLabel>
-              <Input
-                type="number"
-                name="age"
-                value={formData.age}
-                onChange={handleInputChange}
-              />
-            </FormControl>
-
-            <Checkbox isRequired>I agree to the terms and conditions</Checkbox>
 
             <Button type="submit" colorScheme="blue">
               Register

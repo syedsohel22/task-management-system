@@ -6,7 +6,7 @@ const userRouter = express.Router();
 
 userRouter.post("/register", async (req, res) => {
   //logic
-  const { full_name, email, password, gender, city, age } = req.body;
+  const { full_name, email, password } = req.body;
   try {
     bcrypt.hash(password, 5, async (err, hash) => {
       if (err) {
@@ -14,12 +14,8 @@ userRouter.post("/register", async (req, res) => {
       } else {
         const user = new UserModel({
           full_name,
-
           email,
           password: hash,
-          gender,
-          city,
-          age,
         });
         await user.save();
       }
