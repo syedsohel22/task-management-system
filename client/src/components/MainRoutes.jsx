@@ -5,7 +5,7 @@ import UserPage from "../Pages/UserPage";
 import AdminPage from "../Pages/AdminPage";
 import PageNoteFound from "../Pages/PageNoteFound";
 import HomePage from "../Pages/HomePage";
-import Quiz from "../Pages/Quiz";
+
 const MainRoutes = () => {
   return (
     <Routes>

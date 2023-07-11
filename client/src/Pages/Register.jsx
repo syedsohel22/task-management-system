@@ -9,7 +9,7 @@ import {
   Input,
   Stack,
 } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { registerFunc } from "../redux/authReducer/action";
 const Register = () => {
   const [formData, setFormData] = useState({
