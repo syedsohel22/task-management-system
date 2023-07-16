@@ -29,6 +29,7 @@ const Register = () => {
     // Handle form submission logic here
     dispatch(registerFunc(formData));
     console.log(formData);
+    setFormData({ full_name: "", email: "", password: "" });
   };
 
   return (

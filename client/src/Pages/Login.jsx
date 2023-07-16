@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { loginFunc } from "./../redux/authReducer/action";
 import {
   Box,
   Button,
@@ -15,7 +17,7 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
-
+  const dispatch = useDispatch();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -24,7 +26,9 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
+    dispatch(loginFunc(formData));
     console.log(formData);
+    setFormData({ email: "", password: "" });
   };
 
   return (
