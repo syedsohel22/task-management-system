@@ -16,7 +16,9 @@ export const loginFunc = (data) => (dispatch) => {
   return axios
     .post(`${url}/user/login`, data)
     .then((res) => {
-      console.log(res.data);
+    //  console.log(res.data);
+    //  console.log("token:-", res.data.token);
+      localStorage.setItem("token", res.data.token);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
     })
     .catch((err) => {

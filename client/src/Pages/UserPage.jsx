@@ -28,6 +28,13 @@ const UserPage = () => {
   const handleTaskSubmit = (e) => {
     e.preventDefault();
     console.log(taskData);
+    setTaskData({
+      title: "",
+      description: "",
+      due_date: "",
+      status: "",
+      assigned_user: "",
+    });
   };
 
   const user = ["Aman", "sohel", "sohel-1", "sohel-2", "sohel-3"];
